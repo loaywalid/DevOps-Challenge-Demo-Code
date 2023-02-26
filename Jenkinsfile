@@ -8,7 +8,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
-                docker build -f Dockerfile -t loaywalid/app:v1 .
+                docker build -f Dockerfile --network host  -t loaywalid/app:v1 . 
                 docker push loaywalid/app:v1
                 """
             
