@@ -21,7 +21,6 @@ pipeline {
                      withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
-                kubectl create namespace app
                 kubectl apply -f deployment-redis.yml
                 kubectl apply -f redis-service.yml
                 kubectl apply -f app-deployment.yml
